@@ -14,7 +14,7 @@ User can follow and have many "friends"<br>
 
 Videos have "states":<br>
     - submitted<br>
-    - <del>in-progress</del><br>
+    - in-progress<br>
     - <del>(the next 2 will repeat)</del><br>
     - <del>needs to be reviewd</del><br>
     - <del>review complete</del><br>
