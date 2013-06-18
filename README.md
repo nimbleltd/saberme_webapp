@@ -8,8 +8,9 @@ Allowing users to submit video files and be notified when they are complete
 
 DB relationships
 ==================
-User has account
-User has many videos
+User has account<br>
+User has many videos<br>
+User can follow and have many "friends"<br>
 
 Videos have "states":<br>
     - submitted<br>
