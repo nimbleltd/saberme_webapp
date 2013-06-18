@@ -11,12 +11,12 @@ DB relationships
 User has account
 User has many videos
 
-Videos have "states":
-    - submitted
-    - <del>in-progress</del>
-    - <del>(the next 2 will repeat)</del>
-    - <del>needs to be reviewd</del>
-    - <del>review complete</del>
-    - <del>(the previous 2 will repeat)</del>
-    - Final Approval
+Videos have "states":<br>
+    - submitted<br>
+    - <del>in-progress</del><br>
+    - <del>(the next 2 will repeat)</del><br>
+    - <del>needs to be reviewd</del><br>
+    - <del>review complete</del><br>
+    - <del>(the previous 2 will repeat)</del><br>
+    - Final Approval<br>
 
