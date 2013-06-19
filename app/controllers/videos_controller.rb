@@ -24,7 +24,7 @@ class VideosController < ApplicationController
 
     def update
       @video = Video.find(params[:id])
-      @video.update_attributes(params[:article])
+      @video.update_attributes(params[:video])
       @video.save!
       redirect_to video_path(@video)
     end
@@ -34,4 +34,9 @@ class VideosController < ApplicationController
       @video.destroy
       redirect_to videos_path
     end
+
+    def youtube_url_from_user
+      @video = Video.find(params[:youtube_url])
+    end
+
 end
