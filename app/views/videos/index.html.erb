@@ -1,0 +1,18 @@
+<h1>All Videos</h1>
+
+<ul>
+    <% @videos.each do |video| %>
+      <li>
+        <b><%= link_to video.title, video_path(video) %></b><br/>
+        You Tube URL: <a href="<%= video.youtube_url %>"><%= video.youtube_url %></a><br/>
+        User: <%= video.user_owner %><br/>
+        <i>Update:
+          <%= link_to "edit", edit_video_path(video) %>
+          <%= link_to "remove", video, :method => :delete, :confirm => "Delete the video'#{video.title}?" %>
+        </i>
+        <br/><br/>
+      </li>
+    <% end %>
+</ul>
+
+<%= link_to "Submit new SaberMe Video", new_video_path %>

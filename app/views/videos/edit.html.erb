@@ -1,0 +1,34 @@
+<h1>Update This Video</h1>
+
+<%= form_for(@video) do |f| %>
+    <%#= f.error_messages %>
+
+    <p>
+        <%= f.label :title, 'Update Title' %> <br/>
+        <%= f.text_field :title %>
+    </p>
+
+    <p>
+        <%= f.label :youtube_url, 'Update Video Path' %> <br/>
+        <%= f.text_field :youtube_url %>
+    </p>
+
+    <p>
+        <%= f.label :state, 'change state' %> <br/>
+
+        <%= f.radio_button(:state, 'submitted') %>
+        <%= f.label(:state, "submitted") %>
+        <%= f.radio_button(:state, "in-progress") %>
+        <%= f.label(:state, "in-progress") %>
+        <%= f.radio_button(:state, "ready for review") %>
+        <%= f.label(:state, "ready for review") %>
+        <%= f.radio_button(:state, "approved") %>
+        <%= f.label(:state, "approved") %>
+    </p>
+
+    <p>
+        <%= f.submit 'Update' %>
+        <%= f.submit 'Cancel' %>
+    </p>
+
+<% end %>
