@@ -32,10 +32,12 @@ ActiveRecord::Schema.define(:version => 20130619203141) do
   create_table "videos", :force => true do |t|
     t.text     "youtube_url"
     t.string   "title"
-    t.string   "user_owner"
+    t.integer  "user_id"
     t.string   "state"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "videos", ["user_id"], :name => "index_videos_on_user_id"
 
 end

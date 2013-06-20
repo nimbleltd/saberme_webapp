@@ -1,5 +1,8 @@
 class Video < ActiveRecord::Base
-  attr_accessible :title, :youtube_url, :user_owner, :state, :embed_name
+  attr_accessible :title, :youtube_url, :user_id, :state, :embed_name
+
+  belongs_to :user
+  #has_many :comments
 
   def embed_name
       data_from_user = youtube_url
