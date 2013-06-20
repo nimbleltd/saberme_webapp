@@ -2,8 +2,13 @@ class VideosController < ApplicationController
     #before_filter :authenticate_user!, :except => [:show, :index]
 
     def index
-       @videos = Video.all
-      #@videos = Video.all(:include => :user, :conditions => {:users => {:admin => true}})
+      #@videos = Video.all
+      if current_user
+        @videos = current_user.videos(params[:video])
+      else
+        @videos = Video.all
+      end
+
     end
 
     def new
