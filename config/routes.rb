@@ -1,8 +1,8 @@
 Saberme::Application.routes.draw do
+  # devise_for :installs
   resources :videos
   devise_for :users
-
-  root :to => "home#index"
+  root :to => "videos#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
