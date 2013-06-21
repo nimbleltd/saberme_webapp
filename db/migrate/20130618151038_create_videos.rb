@@ -5,6 +5,7 @@ class CreateVideos < ActiveRecord::Migration
       t.string :title
       t.integer :user_id
       t.string :state
+      t.string :saber_master
 
       t.timestamps
     end
