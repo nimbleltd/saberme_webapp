@@ -1,0 +1,2 @@
+class RotoQueuesController < ApplicationController
+end

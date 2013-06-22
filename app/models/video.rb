@@ -1,8 +1,13 @@
 class Video < ActiveRecord::Base
-  attr_accessible :title, :youtube_url, :user_id, :state, :embed_name, :saber_master
-
-  belongs_to :user
+  attr_accessible :title, :youtube_url, :customer_id, :state, :embed_name, :employee_id
+  belongs_to :customer, :class_name => "User"
+  belongs_to :employee, :class_name => "User"
   #has_many :comments
+
+  scope :unassigned, -> {where :employee_id => nil}
+  #scope :assigned, -> {where "saber_master IS NOT NULL"}
+  scope :completed, -> {where :state => "approved"}
+
 
   def embed_name
       data_from_user = youtube_url
@@ -14,5 +19,7 @@ class Video < ActiveRecord::Base
   def downlaod_video
     system "youtube-dl -t  '#{video.embed_name}' --restrict-filenames"
   end
+
+
 
 end

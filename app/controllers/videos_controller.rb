@@ -4,7 +4,13 @@ class VideosController < ApplicationController
     def index
       #@videos = Video.all
       if current_user
-        @videos = current_user.videos(params[:video])
+        if current_user.customer?
+          @videos = current_user.videos(params[:video])
+        elsif current_user.employee?
+          @unassigned_videos = Video.unassigned
+          @assigned_videos = current_user.assigned_videos
+          @completed_videos = Video.completed
+        end
       else
         @videos = Video.all
       end
