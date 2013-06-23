@@ -18,7 +18,11 @@
         <TD><%= video.customer.email %></TD>
         <TD><%= video.created_at %></TD>
         <TD><%= video.updated_at %></TD>
-        <TD><button class="btn">Assign</button></TD>
+        <% if video.employee_id.blank?  %>
+          <TD><button class="btn btn-success">Assign</button></TD>
+        <% else %>
+          <TD><%= video.employee && video.employee.email %></TD>
+        <% end %>
         <!-- <TD><%#= video.employee && video.employee.email %></TD> -->
      </TR>
   <% end %>
