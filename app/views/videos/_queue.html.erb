@@ -21,7 +21,18 @@
         <% if video.employee_id.blank?  %>
           <TD><button class="btn btn-success">Assign</button></TD>
         <% else %>
-          <TD><%= video.employee && video.employee.email %></TD>
+          <TD><div class="btn-group">
+                <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><%= video.employee && video.employee.email %> <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Unassign</a></li>
+                  <li class="dropdown-submenu">
+                  <a href="#">Re-assign to:</a>
+                  <ul class="dropdown-menu">
+                  <% User.employee.each do |employee| %>
+                    <li><a href="#"><%= employee.email %></a></li>
+                  <% end %>
+                </ul>
+              </div><!-- /btn-group --></TD>
         <% end %>
         <!-- <TD><%#= video.employee && video.employee.email %></TD> -->
      </TR>
