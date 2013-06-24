@@ -3,12 +3,65 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
   <title>Saberme</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+
+ <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">Saberme&nbsp&copy;</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="./getting-started.html">Pricing</a>
+              </li>
+              <li class="">
+                <a href="./scaffolding.html">About</a>
+              </li>
+              <li class="">
+                <a href="./base-css.html">Work for Us</a>
+              </li>
+              <li class="">
+                <a href="./base-css.html">Contact Us</a>
+              </li>
+            <form class="navbar-form pull-right">
+                <input type="text" class="span2" placeholder="Login">
+                <input type="text" class="span2" placeholder="Password">
+                <input type="submit" value="Login" class="btn"/>
+                <!-- <input type="submit" value="Sign up" class="btn"/> -->
+
+                  <%= link_to raw("Sign up"),
+                  new_user_registration_path, class: "btn", method: :get %>
+
+                  <%#= link_to "Sign up",  :class => "btn" %>
+                  <% button_to "Sign up", new_user_registration_path, :class => "btn"%>
+                <%#= link_to "Sign up", new_user_registration_path %> <!-- or --> <%#= link_to "Sign in", new_user_session_path %>
+            </form>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Subhead
+================================================== -->
+
 <div id="container">
   <div id='user_nav'>
     <% if user_signed_in? %>

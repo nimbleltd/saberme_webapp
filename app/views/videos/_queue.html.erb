@@ -20,7 +20,7 @@
         <TD><%= video.updated_at %></TD>
         <% if video.employee_id.blank?  %>
           <TD><button class="btn btn-success">Assign</button></TD>
-        <% else %>
+        <% elsif video.employee_id != nil && video.state != "approved" %>
           <TD><div class="btn-group">
                 <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><%= video.employee && video.employee.email %> <span class="caret"></span></button>
                 <ul class="dropdown-menu">
@@ -33,6 +33,8 @@
                   <% end %>
                 </ul>
               </div><!-- /btn-group --></TD>
+        <% elsif video.state == "approved" %>
+          <TD><%= video.employee && video.employee.email %></TD>
         <% end %>
         <!-- <TD><%#= video.employee && video.employee.email %></TD> -->
      </TR>
