@@ -1,6 +1,6 @@
  <TABLE  BORDER="5">
      <TR>
-        <TH COLSPAN="6">
+        <TH COLSPAN="7">
            <!-- <H3>queue</H3> -->
         </TH>
      </TR>
@@ -10,6 +10,7 @@
         <TH>Submit Date</TH>
         <TH>Approval Date</TH>
         <TH>Employee ID</TH>
+        <TH>Show Vid Pg</TH>
 
   <% videos.each do |video| %>
     <TR>
@@ -19,23 +20,27 @@
         <TD><%= video.created_at %></TD>
         <TD><%= video.updated_at %></TD>
         <% if video.employee_id.blank?  %>
-          <TD><button class="btn btn-success">Assign</button></TD>
+          <TD><button class="btn btn-success"><%= button_to 'Claim', claim_video_path(video)%></button></TD>
         <% elsif video.employee_id != nil && video.state != "approved" %>
           <TD><div class="btn-group">
                 <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><%= video.employee && video.employee.email %> <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Unassign</a></li>
+                  <!-- <li><a href="#">Unassign</a></li> -->
+                  <li><a href="#"><%= link_to 'Unassign', unassign_video_path(video)%></a></li>
                   <li class="dropdown-submenu">
                   <a href="#">Re-assign to:</a>
                   <ul class="dropdown-menu">
                   <% User.employee.each do |employee| %>
-                    <li><a href="#"><%= employee.email %></a></li>
+                    <li><a href="#"><%=link_to employee.email,  reassign_video_path(video)%></a></li>
                   <% end %>
                 </ul>
               </div><!-- /btn-group --></TD>
         <% elsif video.state == "approved" %>
           <TD><%= video.employee && video.employee.email %></TD>
         <% end %>
+        <TD><button class="btn"><%= link_to "Show", video_path(video.id) %></button></TD>
+        <!-- link_to "Profile", :controller => "profiles", :action => "show", :id =>  @profile -->
+
         <!-- <TD><%#= video.employee && video.employee.email %></TD> -->
      </TR>
   <% end %>

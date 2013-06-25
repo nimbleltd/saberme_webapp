@@ -1,11 +1,17 @@
 <h1>My SaberMe Videos</h1
+
+
+
   <% if current_user %>
     <% if current_user.customer? %>
-
+<div class="btn-group">
+  <button class="btn btn-large"><%= link_to "Submit Video", new_video_path %></button>
+</div>
     <ul>
         <% @videos.each do |video| %>
-          <li>
-            <b><%= link_to video.title, video_path(video) %></b><br/>
+          <ul>
+            <h3><b><%= link_to video.title, video_path(video) %></b></h3>
+              <hr>
             You Tube URL: <a href="<%= video.youtube_url %>"><%= video.youtube_url %></a><br/>
             You Tube embed:<br/>
             <iframe width="640" height="400" src="http://www.youtube.com/embed/<%= video.embed_name %>" frameborder="0" allowfullscreen></iframe><br/>
@@ -13,19 +19,18 @@
             User: <%= video.customer_id %><br/>
             State: <%= video.state %><br/>
             <i>Update:
-              <%= link_to "edit", edit_video_path(video) %>
-              <%= link_to "remove", video, :method => :delete, :confirm => "Delete the video'#{video.title}?" %>
+              <div class="btn-group">
+                <button class="btn"><%= link_to "view", video_path(video.id) %></button>
+                <button class="btn"><%= link_to "edit", edit_video_path(video) %></button>
+                <button class="btn"><%= link_to "remove", video, :method => :delete, :confirm => "Delete the video'#{video.title}?" %></button>
+              </div>
             </i>
-            <br/><br/><br/>
-          </li>
+            <hr>
+           </ul>
         <% end %>
     </ul>
 
-      <%#= @users.each do |user| %>
-        <%#= Video.joins(:user) %>
-      <%# end %>
-
-    <%= link_to "Submit new SaberMe Video", new_video_path %><br/>
+    <br/>
     <br/>
     <br/>
     <br/>

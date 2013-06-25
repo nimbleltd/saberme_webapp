@@ -41,17 +41,12 @@
                 <a href="./base-css.html">Contact Us</a>
               </li>
             <form class="navbar-form pull-right">
-                <input type="text" class="span2" placeholder="Login">
-                <input type="text" class="span2" placeholder="Password">
-                <input type="submit" value="Login" class="btn"/>
-                <!-- <input type="submit" value="Sign up" class="btn"/> -->
-
-                  <%= link_to raw("Sign up"),
-                  new_user_registration_path, class: "btn", method: :get %>
-
-                  <%#= link_to "Sign up",  :class => "btn" %>
-                  <% button_to "Sign up", new_user_registration_path, :class => "btn"%>
-                <%#= link_to "Sign up", new_user_registration_path %> <!-- or --> <%#= link_to "Sign in", new_user_session_path %>
+              <%= link_to raw("Sign up"),new_user_registration_path, class: "btn", method: :get %>
+                  <a class="dropdown-toggle btn" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                      <!-- Login form here -->
+                      <%= render "devise/sessions/signupbar" %>
+                    </div>
             </form>
             </ul>
           </div>
