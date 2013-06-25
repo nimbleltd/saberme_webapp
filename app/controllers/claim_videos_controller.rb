@@ -19,8 +19,7 @@ class ClaimVideosController < ApplicationController
     def reassign
       if current_user.employee?
         @video = Video.find(params[:id])
-        @video_employee = Video.find(params[:employee_id])
-        @video_employee.update_attributes(:employee_id => employee.id)
+        @video.update_attributes(params[:employee_id])
       end
       redirect_to videos_path
     end

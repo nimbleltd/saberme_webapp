@@ -1,12 +1,13 @@
-<h1>My SaberMe Videos</h1
+
 
 
 
   <% if current_user %>
     <% if current_user.customer? %>
-<div class="btn-group">
-  <button class="btn btn-large"><%= link_to "Submit Video", new_video_path %></button>
-</div>
+    <h1>My SaberMe Videos</h1>
+    <!-- <div class="btn-group">
+      <button class="btn btn-large"><%= link_to "Submit Video", new_video_path %></button>
+    </div> -->
     <ul>
         <% @videos.each do |video| %>
           <ul>
@@ -37,7 +38,7 @@
     <br/>
     <% end %>
       <% if current_user.employee? %>
-      <h1>Rotoscope Queue</h1>
+      <h1>Employee Staff Queue</h1>
     <%= render "queue", :videos => @unassigned_videos %>
       <h3>Roto Work Queue</h3>
     <%= render "queue", :videos => @assigned_videos %>
