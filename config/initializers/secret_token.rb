@@ -14,4 +14,4 @@ end
 
 # use "rake secret" to generate a random token
 #Tell Heroku what your file is
-# heroku config:set SECRET_TOKEN = "ca9ebe7fa8ba1c92215f9fe618f621c813db60fca83948f9bc2e28589baf1c82a74413be11ed27bcafc574386f7324f2f8ac83fce128eb327563d64af35a4944"
+# heroku config:set SECRET_TOKEN = "<random token here>" --app <appname>
