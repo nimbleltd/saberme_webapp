@@ -21,12 +21,27 @@
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           </button>
-          <%#= link_to raw("Saberme&nbsp&copy;"),videos_path, class: "brand", method: :get %>
-
-          <a class="brand" href="">Saberme&nbsp&copy;</a>
-
+          <a class="brand" style="padding: 20px;" href="/videos"><strong>Saberme&nbsp&copy;&nbsp&nbsp</strong></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
+              <% if user_signed_in? %>
+                <a class="dropdown">
+                  <a class="btn dropdown-toggle brand" style="padding-top: 14px; padding-bottom: 14px;" data-toggle="dropdown" href="#">
+                    <%= current_user.email %>
+                    <span class='caret'></span>
+                    <%#= link_to raw("#{current_user.email}<span class='caret'></span>"), destroy_user_session_path, class: "btn", :method => :delete  %>
+                    </a>
+                    <ul class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
+                      <!-- Login form here -->
+                      <ul class="unstyled">
+                        <li><%= link_to "Sign Out", destroy_user_session_path,class: "brand", :method => :delete  %></li>
+                        <li><%= link_to "View User Account", edit_user_registration_path,class: "brand" %></li>
+                      </ul>
+                    </ul>
+                  </a>
+                </a>
+
+
               <li class="brand">
                 <a href="./getting-started.html">Pricing</a>
               </li>
@@ -39,28 +54,17 @@
               <li class="brand">
                 <a href="./base-css.html">Contact Us</a>
               </li>
-              <% if user_signed_in? %>
-                <a class="dropdown">
-                <a class="btn dropdown-toggle brand" data-toggle="dropdown" href="#">
-                <%= current_user.email %>
-                <span class='caret'></span>
-                <%#= link_to raw("#{current_user.email}<span class='caret'></span>"), destroy_user_session_path, class: "btn", :method => :delete  %>
-                </a>
-                <ul class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
-                  <!-- Login form here -->
-                  <ul class="unstyled">
-                  <li><%= link_to "Sign Out", destroy_user_session_path,class: "brand", :method => :delete  %></li>
-                  <li><%= link_to "User Account", edit_user_registration_path,class: "brand" %></li>
-                  </ul>
-                </a>
+
 
                 <% if current_user.customer? %>
-                  <%= link_to "Submit Video", new_video_path, class: "btn" %>
+
+                  <%= link_to "Submit Video", new_video_path, class: "btn brand", style: "padding: 15px;" %>
                 <% end %>
               <% else %>
-                <%= link_to raw("Sign up"),new_user_registration_path, class: "btn", method: :get %>
+                <%= link_to raw("Sign up"),new_user_registration_path, class: "btn brand", style: "padding: 16px;", method: :get %>
+                <div class="offset1">
                 <a class="dropdown">
-                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                  <a class="btn dropdown-toggle brand" style="padding: 16px;" data-toggle="dropdown" href="#">
                   Sign In
                   <span class="caret"></span>
                   </a>
@@ -68,6 +72,7 @@
                   <!-- Login form here -->
                   <%= render "devise/sessions/signupbar" %>
                   </a>
+                </div>
               <% end %>
                   </ul>
           </div>

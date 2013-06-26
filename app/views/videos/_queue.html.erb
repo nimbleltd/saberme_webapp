@@ -28,7 +28,7 @@
             <TD><%= video.created_at %></TD>
             <TD><%= video.updated_at %></TD>
             <% if video.employee_id.blank?  %>
-              <TD><button class="btn btn-success"><%= button_to 'Claim', claim_video_path(video)%></button></TD>
+              <TD><%= button_to 'Claim', claim_video_path(video), class: "btn btn-success"%></TD>
             <% elsif video.employee_id != nil && video.state != "approved" %>
               <TD><div class="btn-group">
                     <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><%= video.employee && video.employee.email %> <span class="caret"></span></button>
@@ -46,7 +46,7 @@
             <% elsif video.state == "approved" %>
               <TD ><%= video.employee && video.employee.email %></TD>
             <% end %>
-            <TD><button class="btn"><%= link_to "Show", video_path(video.id) %></button></TD>
+            <TD><%= link_to "Show", video_path(video.id), class: "btn" %></TD>
             <!-- link_to "Profile", :controller => "profiles", :action => "show", :id =>  @profile -->
 
             <!-- <TD><%#= video.employee && video.employee.email %></TD> -->
