@@ -43,8 +43,9 @@ ActiveRecord::Schema.define(:version => 20130621190301) do
     t.integer  "customer_id"
     t.string   "state"
     t.integer  "employee_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "progress",    :default => 0
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
 end

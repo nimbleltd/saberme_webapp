@@ -13,7 +13,9 @@
             <p>You Tube URL: <a href="<%= video.youtube_url %>"><%= video.youtube_url %></a><br/></p>
             <p>You Tube embed:<br/></p>
             <p><iframe width="640" height="400" src="http://www.youtube.com/embed/<%= video.embed_name %>" frameborder="0" allowfullscreen></iframe><br/></p>
-
+            <div class="progress progress-success progress-striped active span6">
+              <div class="bar" style="width: <%= video.progress %>%"></div>
+            </div><br/><br/>
             User: <%= video.customer_id %><br/>
             State: <%= video.state %><br/>
             <i>Update:

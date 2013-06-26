@@ -10,6 +10,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
+  <div class="span9">
 
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
@@ -21,7 +23,7 @@
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           </button>
-          <a class="brand" style="padding: 20px;" href="/videos"><strong>Saberme&nbsp&copy;&nbsp&nbsp</strong></a>
+          <a class="brand" style="padding: 20px;" href="/"><strong>Saberme&nbsp&copy;&nbsp&nbsp</strong></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <% if user_signed_in? %>
@@ -94,6 +96,7 @@
   </div>
 </div>
 <%= yield %>
-
+  </div>
+</div>
 </body>
 </html>

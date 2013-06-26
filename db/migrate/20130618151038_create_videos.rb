@@ -6,6 +6,8 @@ class CreateVideos < ActiveRecord::Migration
       t.integer :customer_id
       t.string :state
       t.integer :employee_id
+      t.integer :progress, :default => 0
+
 
       t.timestamps
     end
