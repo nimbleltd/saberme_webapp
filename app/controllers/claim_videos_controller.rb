@@ -3,7 +3,7 @@ class ClaimVideosController < ApplicationController
     def claim
       if current_user.employee?
         @video = Video.find(params[:id])
-        @video.update_attribute(:employee_id, current_user.id)
+        @video.update_attributes(:employee_id => current_user.id)
       end
       redirect_to videos_path
     end
@@ -19,7 +19,7 @@ class ClaimVideosController < ApplicationController
     def reassign
       if current_user.employee?
         @video = Video.find(params[:id])
-        @video.update_attributes(params[:employee_id])
+        @video.update_attributes(:employee_id => params[:employee_id])
       end
       redirect_to videos_path
     end

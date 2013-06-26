@@ -4,8 +4,8 @@ Saberme::Application.routes.draw do
   devise_for :users
   root :to => "videos#index"
   post "/claim/videos/:id" => "claim_videos#claim", as: 'claim_video'
-  get "/unassign/videos/:id" => "claim_videos#unassign", as: 'unassign_video'
-  get "/reassign/videos/:id" => "claim_videos#reassign", as: 'reassign_video'
+  put "/unassign/videos/:id" => "claim_videos#unassign", as: 'unassign_video'
+  put "/reassign/videos/:id" => "claim_videos#reassign", as: 'reassign_video'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,7 +1,4 @@
 
-
-
-
   <% if current_user %>
     <% if current_user.customer? %>
     <h1>My SaberMe Videos</h1>
@@ -13,9 +10,9 @@
           <ul>
             <h3><b><%= link_to video.title, video_path(video) %></b></h3>
               <hr>
-            You Tube URL: <a href="<%= video.youtube_url %>"><%= video.youtube_url %></a><br/>
-            You Tube embed:<br/>
-            <iframe width="640" height="400" src="http://www.youtube.com/embed/<%= video.embed_name %>" frameborder="0" allowfullscreen></iframe><br/>
+            <p>You Tube URL: <a href="<%= video.youtube_url %>"><%= video.youtube_url %></a><br/></p>
+            <p>You Tube embed:<br/></p>
+            <p><iframe width="640" height="400" src="http://www.youtube.com/embed/<%= video.embed_name %>" frameborder="0" allowfullscreen></iframe><br/></p>
 
             User: <%= video.customer_id %><br/>
             State: <%= video.state %><br/>
@@ -46,4 +43,7 @@
     <%= render "queue", :videos => @completed_videos %>
       <h3>Completed Jobs</h3>
     <% end %>
+
+  <% else %>
+    Welcome Screen
   <% end %>

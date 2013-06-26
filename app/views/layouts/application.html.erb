@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
-<p class="notice"><%= notice %></p>
+<!-- <p class="notice"><%#= notice %></p> -->
 <p class="alert"><%= alert %></p>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
   <title>Saberme</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -21,39 +20,56 @@
       <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="./index.html">Saberme&nbsp&copy;</a>
+          <%#= link_to raw("Saberme&nbsp&copy;"),videos_path, class: "brand", method: :get %>
+
+          <a class="brand" href="">Saberme&nbsp&copy;</a>
+
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="">
+              <li class="brand">
                 <a href="./getting-started.html">Pricing</a>
               </li>
-              <li class="">
+              <li class="brand">
                 <a href="./scaffolding.html">About</a>
               </li>
-              <li class="">
+              <li class="brand">
                 <a href="./base-css.html">Work for Us</a>
               </li>
-              <li class="">
+              <li class="brand">
                 <a href="./base-css.html">Contact Us</a>
               </li>
-            <form class="navbar-form pull-right">
               <% if user_signed_in? %>
-                <%= link_to "Sign out", destroy_user_session_path, class: "btn", :method => :delete  %>
-                <button class="btn"><%= link_to "Submit Video", new_video_path %></button>
+                <a class="dropdown">
+                <a class="btn dropdown-toggle brand" data-toggle="dropdown" href="#">
+                <%= current_user.email %>
+                <span class='caret'></span>
+                <%#= link_to raw("#{current_user.email}<span class='caret'></span>"), destroy_user_session_path, class: "btn", :method => :delete  %>
+                </a>
+                <ul class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
+                  <!-- Login form here -->
+                  <ul class="unstyled">
+                  <li><%= link_to "Sign Out", destroy_user_session_path,class: "brand", :method => :delete  %></li>
+                  <li><%= link_to "User Account", edit_user_registration_path,class: "brand" %></li>
+                  </ul>
+                </a>
+
+                <% if current_user.customer? %>
+                  <%= link_to "Submit Video", new_video_path, class: "btn" %>
+                <% end %>
               <% else %>
                 <%= link_to raw("Sign up"),new_user_registration_path, class: "btn", method: :get %>
-                    <a class="dropdown-toggle btn" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-                    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-                      <!-- Login form here -->
-                      <%= render "devise/sessions/signupbar" %>
-                    </div>
+                <a class="dropdown">
+                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                  Sign In
+                  <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
+                  <!-- Login form here -->
+                  <%= render "devise/sessions/signupbar" %>
+                  </a>
               <% end %>
-            </form>
-            </ul>
+                  </ul>
           </div>
         </div>
       </div>

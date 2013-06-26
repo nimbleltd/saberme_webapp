@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+$(function() {
+  // Fix input element click problem
+  $('.dropdown input, .dropdown label, .dropdown-toggle input, .dropdown-toggle label, .dropdown-menu input, .dropdown-menu label').click(function(e) {
+    e.stopPropagation();
+  });
+});
