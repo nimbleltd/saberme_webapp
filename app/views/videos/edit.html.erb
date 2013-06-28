@@ -14,21 +14,26 @@
     </p>
 
     <p>
-        <%= f.label :state, 'change state' %> <br/>
-
-        <%= f.radio_button(:state, 'submitted') %>
-        <%= f.label(:state, "submitted") %>
-        <%= f.radio_button(:state, "in-progress") %>
-        <%= f.label(:state, "in-progress") %>
-        <%= f.radio_button(:state, "ready for review") %>
-        <%= f.label(:state, "ready for review") %>
-        <%= f.radio_button(:state, "approved") %>
-        <%= f.label(:state, "approved") %>
+      <% if current_user %>
+        <% if current_user.employee? %>
+        <ul class="inline">
+        <h2>Change Job Status</h2>
+           <li><%= f.radio_button(:state, 'submitted') %></li>
+           <li><%= f.label(:state, "submitted") %></li>
+           <li><%= f.radio_button(:state, "in-progress") %></li>
+           <li><%= f.label(:state, "in-progress") %></li>
+           <li><%= f.radio_button(:state, "ready for review") %></li>
+           <li><%= f.label(:state, "ready for review") %></li>
+           <li><%= f.radio_button(:state, "approved") %></li>
+           <li><%= f.label(:state, "approved") %></li>
+        </ul>
+        <% end %>
+      <% end %>
     </p>
 
     <p>
         <%= f.submit 'Update' %>
-        <%= f.submit 'Cancel' %>
+        <%#= f.submit 'Cancel' %>
     </p>
 
 <% end %>

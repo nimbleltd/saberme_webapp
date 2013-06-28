@@ -3,28 +3,30 @@
 <%= form_for(@video) do |f| %>
     <p>
       <%= f.label :title, 'SaberMe Title'%><br/>
-      <%= f.text_field :title, :size => 60 %>
+      <%= f.text_field :title, class: "input-xlarge" %>
     </p>
     <p>
       <%= f.label :youtube_url, 'Youtube URL' %><br/>
-      <%= f.text_field :youtube_url, :size => 80 %>
+      <%= f.text_field :youtube_url, class: "input-xlarge" %>
     </p>
     <p>
       <%#= f.label :customer_id, 'username' %><br/>
       <%#= f.text_field :user_id, :size => 60 %>
     </p>
     <p>
-        <%= f.label :state, 'change state:' %> <br/>
-        <%#= f.select :state, ["submitted","in-progress", "ready for review", "approved"] %>
-        <%= f.radio_button(:state, 'submitted') %>
-        <%= f.label(:state, "submitted") %>
-        <%= f.radio_button(:state, "in-progress") %>
-        <%= f.label(:state, "in-progress") %>
-        <%= f.radio_button(:state, "ready for review") %>
-        <%= f.label(:state, "ready for review") %>
-        <%= f.radio_button(:state, "approved") %>
-        <%= f.label(:state, "approved") %>
+        <ul class="inline">
+        <h2>Change Job Status</h2>
+           <li><%= f.radio_button(:state, 'submitted') %></li>
+           <li><%= f.label(:state, "submitted") %></li>
+           <li><%= f.radio_button(:state, "in-progress") %></li>
+           <li><%= f.label(:state, "in-progress") %></li>
+           <li><%= f.radio_button(:state, "ready for review") %></li>
+           <li><%= f.label(:state, "ready for review") %></li>
+           <li><%= f.radio_button(:state, "approved") %></li>
+           <li><%= f.label(:state, "approved") %></li>
+        </ul>
     </p>
 
     <%= f.submit 'Submit' %>
+    <%= link_to "Cancel", :back ? %>
 <% end %>
