@@ -47,5 +47,7 @@
     <% end %>
 
   <% else %>
-    Welcome Screen
+    <h1><center>Welcome to Saberme</center></h1>
+    <h2><center> TURN THIS <br/><img src="/assets/saberme-before.jpg" class="img-circle"><br/>INTO..<br/><img src="/assets/saberme-after.jpg" class="img-circle"></center></h2>
+    <center><%= link_to raw("SIGN UP"),new_user_registration_path, class: "btn btn-large btn-primary", style: "padding: 16px;", method: :get %></center>
   <% end %>
