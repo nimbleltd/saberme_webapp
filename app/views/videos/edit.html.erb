@@ -1,38 +1,51 @@
-<h1>Update This Video</h1>
+
 
 <%= form_for(@video) do |f| %>
     <%#= f.error_messages %>
+    <% if current_user %>
+      <% if current_user.customer? %>
+        <h1>Update This Video</h1>
+        <p>
+            <%= f.label :title, 'Update Title' %> <br/>
+            <%= f.text_field :title, class: "input-xlarge" %>
+        </p>
 
-    <p>
-        <%= f.label :title, 'Update Title' %> <br/>
-        <%= f.text_field :title %>
-    </p>
+        <p>
+            <%= f.label :youtube_url, 'Update Video Path' %> <br/>
+            <%= f.text_field :youtube_url, class: "input-xxlarge" %>
+        </p>
+      <% else %>
+        <h1>ROTOWINDOW</h1>
+        <h2><%= @video.title %></h2>
+      <% end %>
+    <% end %>
 
-    <p>
-        <%= f.label :youtube_url, 'Update Video Path' %> <br/>
-        <%= f.text_field :youtube_url %>
-    </p>
-
-    <p>
+      <p>
       <% if current_user %>
         <% if current_user.employee? %>
-        <ul class="inline">
-        <h2>Change Job Status</h2>
-           <li><%= f.radio_button(:state, 'submitted') %></li>
-           <li><%= f.label(:state, "submitted") %></li>
-           <li><%= f.radio_button(:state, "in-progress") %></li>
-           <li><%= f.label(:state, "in-progress") %></li>
-           <li><%= f.radio_button(:state, "ready for review") %></li>
-           <li><%= f.label(:state, "ready for review") %></li>
-           <li><%= f.radio_button(:state, "approved") %></li>
-           <li><%= f.label(:state, "approved") %></li>
-        </ul>
+          <img src="/assets/saber-mockup.jpg">
+          <ul class="inline">
+            <h2>Change Job Status</h2>
+             <li><%= f.radio_button(:state, 'submitted') %></li>
+             <li><%= f.label(:state, "submitted") %></li>
+             <li><%= f.radio_button(:state, "in-progress") %></li>
+             <li><%= f.label(:state, "in-progress") %></li>
+             <li><%= f.radio_button(:state, "ready for review") %></li>
+             <li><%= f.label(:state, "ready for review") %></li>
+             <li><%= f.radio_button(:state, "approved") %></li>
+             <li><%= f.label(:state, "approved") %></li>
+          </ul>
+          <h2>Progress</h2>
+          <div class="progress progress-success progress-striped span6">
+      <div class="bar" style="width: <%= @video.progress %>%"></div>
+    </div>
         <% end %>
       <% end %>
     </p>
+    <br/><br/>
 
     <p>
-        <%= f.submit 'Update' %>
+        <%= f.submit 'Save Progress', class: "btn btn-large" %>
         <%#= f.submit 'Cancel' %>
     </p>
 

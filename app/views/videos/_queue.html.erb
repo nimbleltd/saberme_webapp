@@ -5,26 +5,29 @@
             </TH> -->
          </TR>
           <thead>
-              <TH>Status</TH>
-              <TH>Videoname</TH>
-              <TH>User</TH>
-              <TH>Submit Date</TH>
-              <TH>Approval Date</TH>
-              <TH>Employee ID</TH>
-              <TH>Show Vid Pg</TH>
+              <TH><center>Status</center></TH>
+              <TH><center>Videoname</center></TH>
+              <TH><center>User</center></TH>
+              <TH><center>Submit Date</center></TH>
+              <TH><center>Recent Modify Date</center></TH>
+              <TH><center>Progress</center></TH>
+              <TH><center>Employee ID</center></TH>
+              <TH><center>Roto</center></TH>
           </thead>
       <% videos.each do |video| %>
         <tbody>
         <TR>
-            <TD><%= video.state %></TD>
-            <TD><%= video.title %></TD>
-            <TD><%= video.customer.email %></TD>
-            <TD><%= video.created_at %></TD>
-            <TD><%= video.updated_at %></TD>
+            <TD><center><%= video.state %></center></TD>
+            <TD><center><%= video.title %></center></TD>
+            <TD><center><%= video.customer.email %></center></TD>
+            <TD><center><%= video.created_at.to_date %></center></TD>
+            <TD><center><%= video.updated_at.to_date %></center></TD>
+            <TD><center><%= video.progress %>%</center></TD>
             <% if video.employee_id.blank?  %>
-              <TD><%= button_to 'Claim', claim_video_path(video), class: "btn btn-success"%></TD>
+              <TD><center><%= button_to 'Claim', claim_video_path(video), class: "btn btn-success"%></center></TD>
+              <TD><center><button class="btn disabled">Go Roto</button></center></TD>
             <% elsif video.employee_id != nil && video.state != "approved" %>
-              <TD><div class="btn-group">
+              <TD><center><div class="btn-group">
                     <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><%= video.employee && video.employee.email %> <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                       <!-- <li><a href="#">Unassign</a></li> -->
@@ -36,11 +39,13 @@
                         <li><a href="#"><%=link_to employee.email,  reassign_video_path(video, :employee_id => employee.id), :method => :put %></a></li>
                       <% end %>
                     </ul>
-                  </div><!-- /btn-group --></TD>
+                  </div><!-- /btn-group --></center></TD>
+                  <TD><center><%= link_to "Go Roto", edit_video_path(video.id), class: "btn" %></center></TD>
             <% elsif video.state == "approved" %>
-              <TD ><%= video.employee && video.employee.email %></TD>
+              <TD ><center><%= video.employee && video.employee.email %></center></TD>
+              <TD><center><strong>Completed</strong></center></TD>
             <% end %>
-            <TD><%= link_to "Show", video_path(video.id), class: "btn" %></TD>
+
             <!-- link_to "Profile", :controller => "profiles", :action => "show", :id =>  @profile -->
 
             <!-- <TD><%#= video.employee && video.employee.email %></TD> -->
