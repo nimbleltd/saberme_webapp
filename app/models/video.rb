@@ -1,7 +1,7 @@
 class Video < ActiveRecord::Base
   attr_accessible :title, :youtube_url, :customer_id, :state, :embed_name, :employee_id
-  belongs_to :customer, :class_name => "User"
-  belongs_to :employee, :class_name => "User"
+  belongs_to :customer
+  belongs_to :employee
   #has_many :comments
 
   scope :unassigned, -> {where :employee_id => nil}

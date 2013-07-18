@@ -1,4 +1,5 @@
 class ClaimVideosController < ApplicationController
+  before_filter :authenticate_user!
 
     def claim
       if current_user.employee?

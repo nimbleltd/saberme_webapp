@@ -52,14 +52,4 @@ class VideosController < ApplicationController
       @video = Video.find(params[:youtube_url])
     end
 
-    def claim
-      if current_user.employee?
-        @video = Video.find(params[:id])
-        @video.update_attribute(:employee_id, current_user.id)
-      end
-      redirect_to videos_path
-    end
-
-
-
 end
